@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import { GET_FILTERS } from "../graphql/queries";
 import { useQuery } from "@apollo/client";
 
@@ -11,7 +11,7 @@ const Filters = ({ setFilterSelected }) => {
   const genders = [...new Set(characters.map((e) => e.gender))];
   const species = [...new Set(characters.map((e) => e.species))];
 
-// Refs for accessing select elements
+  // Refs for accessing select elements
   const statusSelect = useRef(null);
   const genderSelect = useRef(null);
   const speciesSelect = useRef(null);
@@ -30,53 +30,73 @@ const Filters = ({ setFilterSelected }) => {
       species: "",
     });
 
-     // Set select elements to the first option
+    // Set select elements to the first option
     statusSelect.current.value = "";
     genderSelect.current.value = "";
     speciesSelect.current.value = "";
-
   };
 
-  const selectStyles = "w-full basis-1/2 rounded-lg p-1"; 
-
-
-
+  const selectStyles = "w-[50%]   h-fit rounded-lg p-1";
   return (
-    <div 
-    className=" text-black flex flex-col h-fit sm:flex-row gap-5">
-      <select className={selectStyles} ref={statusSelect} name="status" onChange={handleOnChange}>
-        <option value="" disabled selected >Status...</option>
-        {statuses.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
+    <div className=" text-black flex flex-col lg:flex-row gap-4">
+      <div className="flex w-full flex-row justify-between gap-2">
+        <select
+          className={selectStyles}
+          ref={statusSelect}
+          name="status"
+          onChange={handleOnChange}
+        >
+          <option value="" disabled selected>
+            Status...
           </option>
-        ))}
-      </select>
+          {statuses.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
 
-      <select className={selectStyles} ref={genderSelect}  name="gender" onChange={handleOnChange}>
-        <option value="" disabled selected>Gender...</option>
-        {genders.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
+        <select
+          className={selectStyles}
+          ref={genderSelect}
+          name="gender"
+          onChange={handleOnChange}
+        >
+          <option value="" disabled selected>
+            Gender...
           </option>
-        ))}
-      </select>
+          {genders.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <select className={selectStyles} ref={speciesSelect} name="species" onChange={handleOnChange}>
-        <option value="" disabled selected>Species...</option>
-        {species.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
+      <div className="flex flex-row w-full justify-between gap-2 ">
+        <select
+          className={selectStyles}
+          ref={speciesSelect}
+          name="species"
+          onChange={handleOnChange}
+        >
+          <option value="" disabled selected>
+            Species...
           </option>
-        ))}
-      </select>
+          {species.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
 
-      <button
-        className=" basis-1/5 bg-white rounded-lg  p-1"
-        onClick={handleResetFilters}
-      >
-        Reset filters
-      </button>
+        <button
+          className="w-[50%]  bg-white rounded-lg  p-1"
+          onClick={handleResetFilters}
+        >
+          Reset filters
+        </button>
+      </div>
     </div>
   );
 };

@@ -15,7 +15,7 @@ const Modal = ({ isOpen, onClose, children }) => {
         className="fixed inset-0 bg-black opacity-50"
         onClick={closeModal}
       ></div>
-      <div  className="w-[350px] text-center bg-black p-4  z-50">
+      <div  className="border rounded w-[350px] text-center bg-black p-4  z-50">
         {children}
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"

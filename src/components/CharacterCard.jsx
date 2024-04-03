@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 
 function CharacterCard({ character }) {
-  const { name, id, image, status, gender, species, type, location, origin, dimension } = character;
+  const { name, image, status, gender, species, type, location, origin, dimension } = character;
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
