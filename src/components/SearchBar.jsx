@@ -1,23 +1,28 @@
-import {useState} from 'react'
+import { CiSearch } from "react-icons/ci";
 
 
-const SearchBar = ({searchTerm, setSearchTerm}) => {
 
-  const [inputValue, setInputValue] = useState('');
-
-    const handleOnChange = (e)=>{
-      setInputValue(e.target.value)
-
-      setTimeout(() => {
-        setSearchTerm(inputValue);
-      }, 300);
-    }
+const SearchBar = ({ searchTerm, setSearchTerm }) => {
+  const handleOnChange = (e) => {
+    setTimeout(() => {
+      setSearchTerm(e.target.value);
+    }, 300);
+  };
 
   return (
-    <div className=''>
-        <input placeholder='Seach characters' autoFocus className='bg-black w-full border py-1 rounded-lg border-white' type="text" value={inputValue} onChange={handleOnChange}/>
+    <div className="flex items-center border rounded ">
+      <input
+        placeholder="Seach characters"
+        autoFocus
+        className="bg-black w-full  py-1 rounded-lg border-white"
+        type="text"
+        onChange={handleOnChange}
+      />
+      
+      <CiSearch className="bg-white text-black rounded-sm h-full w-[25px]"/>
+    
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

@@ -61,7 +61,7 @@ const CharacterList = () => {
               <CharacterCard key={character.id} character={character} />
             ))}
           </div>
-          <div className="pb-5 flex gap-5 justify-center items-center">
+          <div className=" flex gap-5 justify-center items-center">
             <button
               className="bg-white text-black px-3 py-1 rounded-lg"
               onClick={handlePrevPage}
@@ -79,6 +79,9 @@ const CharacterList = () => {
             >
               Next
             </button>
+          </div>
+          <div className="flex justify-center pb-5">
+            <span>Developed by Matias Tellini</span>
           </div>
         </>
       )}
