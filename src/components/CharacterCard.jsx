@@ -15,12 +15,13 @@ function CharacterCard({ character }) {
 
   return (
     <div
-      className="flex justify-center items-end h-60 w-60 bg-cover bg-center rounded-lg"
+    onClick={openModal}
+      className="flex justify-center items-end h-60 w-60 bg-cover bg-center rounded-lg hover:cursor-pointer"
       style={{ backgroundImage: `url(${image})` }}
     >
       <h3
-        onClick={openModal}
-        className="font-xl font-bold w-full  rounded bg-black bg-opacity-30  text-center "
+     
+        className=" font-xl font-bold w-full  rounded bg-black bg-opacity-30  text-center "
       >
         {name}
       </h3>
