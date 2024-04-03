@@ -16,7 +16,7 @@ const CharacterList = () => {
   const [totalPages, setTotalPages] = useState(0);
 
   const {
-    loading = true,
+    loading ,
     error,
     data,
   } = useQuery(GET_CHARACTERS, {
@@ -43,12 +43,14 @@ const CharacterList = () => {
   };
 
   return (
-    <div className="container mx-auto grid justify-center md:justify-normal  gap-5 pt-5 px-3">
+    <div className="h-screen overflow-auto container mx-auto grid justify-center md:justify-normal  gap-5 pt-5 px-3">
+     
+ 
       {/* SEARCH BAR */}
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       {/* FILTER */}
-
       <Filters setFilterSelected={setFilterSelected} />
+  
 
       {/* List of characters */}
       {loading ? (

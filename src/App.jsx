@@ -2,7 +2,7 @@ import CharacterList from "./components/CharacterList";
 
 function App() {
   return (
-    <main className="h-full bg-black text-white">
+    <main className="bg-black text-white">
       <CharacterList/>
     </main>
   );
