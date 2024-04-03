@@ -15,11 +15,7 @@ const CharacterList = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
-  const {
-    loading ,
-    error,
-    data,
-  } = useQuery(GET_CHARACTERS, {
+  const { loading, error, data } = useQuery(GET_CHARACTERS, {
     variables: {
       name: searchTerm,
       page: pageNumber,
@@ -44,18 +40,19 @@ const CharacterList = () => {
 
   return (
     <div className="h-screen overflow-auto container mx-auto grid justify-center md:justify-normal  gap-5 pt-5 px-3">
-     
- 
       {/* SEARCH BAR */}
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       {/* FILTER */}
       <Filters setFilterSelected={setFilterSelected} />
-  
 
       {/* List of characters */}
       {loading ? (
         <div className="h-screen flex items-center justify-center">
           <p>Loading...</p>
+        </div>
+      ) : characters.length < 1 ? (
+        <div className="h-screen flex items-center justify-center">
+          <p>No characters found</p>
         </div>
       ) : (
         <>

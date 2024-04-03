@@ -37,11 +37,13 @@ const Filters = ({ setFilterSelected }) => {
 
   };
 
-  const selectStyles = "w-full basis-1/2 rounded-lg p-1";
+  const selectStyles = "w-full basis-1/2 rounded-lg p-1"; 
+
+
 
   return (
     <div 
-    className=" text-black flex flex-col  sm:flex-row gap-5">
+    className=" text-black flex flex-col h-fit sm:flex-row gap-5">
       <select className={selectStyles} ref={statusSelect} name="status" onChange={handleOnChange}>
         <option value="" disabled selected >Status...</option>
         {statuses.map((option, index) => (
