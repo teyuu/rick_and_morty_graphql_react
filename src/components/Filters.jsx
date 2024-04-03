@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import { GET_FILTERS } from "../graphql/queries";
 import { useQuery } from "@apollo/client";
 
@@ -10,6 +10,11 @@ const Filters = ({ setFilterSelected }) => {
   const statuses = [...new Set(characters.map((e) => e.status))];
   const genders = [...new Set(characters.map((e) => e.gender))];
   const species = [...new Set(characters.map((e) => e.species))];
+
+// Refs for accessing select elements
+  const statusSelect = useRef(null);
+  const genderSelect = useRef(null);
+  const speciesSelect = useRef(null);
 
   const handleOnChange = (e) => {
     setFilterSelected((prev) => ({
@@ -24,6 +29,12 @@ const Filters = ({ setFilterSelected }) => {
       gender: "",
       species: "",
     });
+
+     // Set select elements to the first option
+    statusSelect.current.value = "";
+    genderSelect.current.value = "";
+    speciesSelect.current.value = "";
+
   };
 
   const selectStyles = "w-full basis-1/2 rounded-lg p-1";
@@ -31,8 +42,8 @@ const Filters = ({ setFilterSelected }) => {
   return (
     <div 
     className=" text-black flex flex-col  sm:flex-row gap-5">
-      <select className={selectStyles} name="status" onChange={handleOnChange}>
-        <option value="">Status...</option>
+      <select className={selectStyles} ref={statusSelect} name="status" onChange={handleOnChange}>
+        <option value="" disabled selected >Status...</option>
         {statuses.map((option, index) => (
           <option key={index} value={option}>
             {option}
@@ -40,8 +51,8 @@ const Filters = ({ setFilterSelected }) => {
         ))}
       </select>
 
-      <select className={selectStyles} name="gender" onChange={handleOnChange}>
-        <option value="">Gender...</option>
+      <select className={selectStyles} ref={genderSelect}  name="gender" onChange={handleOnChange}>
+        <option value="" disabled selected>Gender...</option>
         {genders.map((option, index) => (
           <option key={index} value={option}>
             {option}
@@ -49,8 +60,8 @@ const Filters = ({ setFilterSelected }) => {
         ))}
       </select>
 
-      <select className={selectStyles} name="species" onChange={handleOnChange}>
-        <option value="">Species...</option>
+      <select className={selectStyles} ref={speciesSelect} name="species" onChange={handleOnChange}>
+        <option value="" disabled selected>Species...</option>
         {species.map((option, index) => (
           <option key={index} value={option}>
             {option}
@@ -59,7 +70,7 @@ const Filters = ({ setFilterSelected }) => {
       </select>
 
       <button
-        className="sm:w-[80%] basis-1/5 bg-white rounded-lg  p-1"
+        className=" basis-1/5 bg-white rounded-lg  p-1"
         onClick={handleResetFilters}
       >
         Reset filters

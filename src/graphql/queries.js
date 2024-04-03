@@ -10,6 +10,15 @@ export const GET_CHARACTERS = gql`
         gender
         species
         image
+        type
+        location{
+          name
+          dimension
+        }
+        origin{
+        name 
+        dimension
+        }
       }
       info {
                 count

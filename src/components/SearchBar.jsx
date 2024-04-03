@@ -15,7 +15,7 @@ const SearchBar = ({searchTerm, setSearchTerm}) => {
 
   return (
     <div className=''>
-        <input autoFocus className='bg-black w-full border py-1 rounded-lg border-white' type="text" value={inputValue} onChange={handleOnChange}/>
+        <input placeholder='Seach characters' autoFocus className='bg-black w-full border py-1 rounded-lg border-white' type="text" value={inputValue} onChange={handleOnChange}/>
     </div>
   )
 }
